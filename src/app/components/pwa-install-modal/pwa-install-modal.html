@@ -13,27 +13,51 @@
 
     <!-- Content -->
     <div class="pwa-modal-content">
-      <p class="pwa-modal-description">
-        Installez Beel Shops sur votre appareil pour un accès rapide et une meilleure expérience.
-      </p>
-      <div class="pwa-modal-features">
-        <div class="pwa-feature">
-          <svg class="pwa-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-          <span>Accès rapide</span>
+      <!-- Android/Chrome Content -->
+      <div *ngIf="!isIOS()">
+        <p class="pwa-modal-description">
+          Installez Beel Shops sur votre appareil pour un accès rapide et une meilleure expérience.
+        </p>
+        <div class="pwa-modal-features">
+          <div class="pwa-feature">
+            <svg class="pwa-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span>Accès rapide</span>
+          </div>
+          <div class="pwa-feature">
+            <svg class="pwa-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span>Hors ligne</span>
+          </div>
+          <div class="pwa-feature">
+            <svg class="pwa-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+            <span>Expérience native</span>
+          </div>
         </div>
-        <div class="pwa-feature">
-          <svg class="pwa-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-          </svg>
-          <span>Hors ligne</span>
-        </div>
-        <div class="pwa-feature">
-          <svg class="pwa-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-          </svg>
-          <span>Expérience native</span>
+      </div>
+
+      <!-- iOS Content -->
+      <div *ngIf="isIOS()" class="pwa-modal-ios-content">
+        <p class="pwa-modal-description">
+          Installez Beel Shops sur votre écran d'accueil pour un accès rapide.
+        </p>
+        <div class="pwa-modal-ios-instructions">
+          <div class="pwa-ios-step">
+            <div class="pwa-ios-step-number">1</div>
+            <p>Appuyez sur le bouton <strong>Partager</strong> en bas de l'écran</p>
+          </div>
+          <div class="pwa-ios-step">
+            <div class="pwa-ios-step-number">2</div>
+            <p>Sélectionnez <strong>"Sur l'écran d'accueil"</strong></p>
+          </div>
+          <div class="pwa-ios-step">
+            <div class="pwa-ios-step-number">3</div>
+            <p>Appuyez sur <strong>"Ajouter"</strong> en haut à droite</p>
+          </div>
         </div>
       </div>
     </div>
@@ -43,8 +67,11 @@
       <button (click)="dismissModal()" class="pwa-btn pwa-btn-secondary">
         Plus tard
       </button>
-      <button (click)="installApp()" class="pwa-btn pwa-btn-primary">
+      <button *ngIf="!isIOS()" (click)="installApp()" class="pwa-btn pwa-btn-primary">
         Installer
+      </button>
+      <button *ngIf="isIOS()" (click)="dismissModal()" class="pwa-btn pwa-btn-primary">
+        Compris
       </button>
     </div>
   </div>

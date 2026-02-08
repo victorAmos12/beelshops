@@ -13,6 +13,7 @@ export class PwaInstallModalComponent implements OnInit {
   private pwaInstallService = inject(PwaInstallService);
   isInstallable = this.pwaInstallService.isInstallable;
   isInstalled = this.pwaInstallService.isInstalled;
+  isIOS = this.pwaInstallService.isIOS;
 
   ngOnInit(): void {
     // Le service gère automatiquement la détection

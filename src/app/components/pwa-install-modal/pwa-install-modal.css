@@ -125,6 +125,51 @@
   font-weight: 500;
 }
 
+/* iOS Instructions */
+.pwa-modal-ios-content {
+  padding: 0;
+}
+
+.pwa-modal-ios-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.pwa-ios-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.pwa-ios-step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background-color: var(--accent-gold);
+  color: #2c2c2c;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.pwa-ios-step p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-top: 4px;
+}
+
+.pwa-ios-step strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
 .pwa-modal-actions {
   display: flex;
   gap: 12px;
