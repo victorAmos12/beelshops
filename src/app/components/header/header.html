@@ -21,30 +21,30 @@
 
     <!-- Right Icons -->
     <div class="header-icons">
-      <!-- Search - Hidden on mobile -->
-      <button aria-label="Recherche" class="icon-btn desktop-only">
+      <!-- Search -->
+      <button aria-label="Recherche" class="icon-btn">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       </button>
 
-      <!-- User - Hidden on mobile -->
-      <button aria-label="Compte" class="icon-btn desktop-only">
+      <!-- User -->
+      <button aria-label="Compte" class="icon-btn">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
       </button>
 
-      <!-- Cart - Hidden on mobile -->
-      <button aria-label="Panier" class="icon-btn desktop-only cart-btn">
+      <!-- Cart -->
+      <button aria-label="Panier" class="icon-btn cart-btn">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
         <span class="cart-badge" style="background-color: var(--accent-gold); color: #2c2c2c;">0</span>
       </button>
 
-      <!-- Theme Toggle - Hidden on mobile -->
-      <button (click)="toggleTheme()" aria-label="Changer le thème" class="icon-btn desktop-only">
+      <!-- Theme Toggle -->
+      <button (click)="toggleTheme()" aria-label="Changer le thème" class="icon-btn">
         <svg *ngIf="!darkMode()" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="5" />
           <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m5.08-5.08l4.24-4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>

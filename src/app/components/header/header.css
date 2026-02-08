@@ -181,6 +181,25 @@ header .icon-btn:hover {
   
   header nav ul {
     gap: 1rem;
+    display: none !important;
+  }
+  
+  header nav ul li a {
+    color: var(--text-primary);
+  }
+  
+  .header-icons {
+    gap: 0.5rem;
+  }
+  
+  .mobile-menu {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-menu {
+    display: none !important;
   }
   
   header nav ul li a {
