@@ -30,10 +30,15 @@
   font-weight: 600;
   transition: color 300ms ease;
   letter-spacing: 0.3px;
+  color: var(--text-primary);
 }
 
 .category-card:hover h3 {
   color: var(--accent-gold);
+}
+
+:root.dark .category-card h3 {
+  color: var(--text-primary);
 }
 
 /* Grid spacing improvements */

@@ -286,11 +286,21 @@ select:focus {
   cursor: pointer;
   min-width: 44px;
   min-height: 44px;
+  color: var(--text-primary);
 }
 
 .icon-btn:hover {
   background-color: rgba(212, 175, 55, 0.1);
   color: #d4af37;
+}
+
+:root.dark .icon-btn {
+  color: var(--text-primary);
+}
+
+:root.dark .icon-btn:hover {
+  background-color: rgba(232, 215, 160, 0.1);
+  color: var(--accent-gold);
 }
 
 .icon-btn svg {

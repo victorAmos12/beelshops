@@ -28,6 +28,7 @@ footer .max-w-7xl {
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: 0.3px;
+  color: white;
 }
 
 .footer-section ul {
@@ -48,8 +49,12 @@ footer .max-w-7xl {
 }
 
 .footer-section a:hover {
-  color: var(--accent-gold);
+  color: #d4af37;
   transform: translateX(4px);
+}
+
+:root.dark .footer-section a:hover {
+  color: var(--accent-gold);
 }
 
 .footer-brand {

@@ -41,12 +41,22 @@
   font-weight: 700;
   letter-spacing: -0.5px;
   line-height: 1.2;
+  color: var(--text-primary);
+}
+
+:root.dark .story-content h2 {
+  color: var(--text-primary);
 }
 
 .story-content p {
   font-size: 1.0625rem;
   line-height: 1.8;
   letter-spacing: 0.2px;
+  color: var(--text-secondary);
+}
+
+:root.dark .story-content p {
+  color: var(--text-secondary);
 }
 
 .story-content button {

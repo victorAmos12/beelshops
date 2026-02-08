@@ -15,6 +15,11 @@
   text-align: center;
   letter-spacing: -0.5px;
   line-height: 1.2;
+  color: var(--text-primary);
+}
+
+:root.dark .newsletter-section h2 {
+  color: var(--text-primary);
 }
 
 .newsletter-section p {
@@ -22,6 +27,11 @@
   text-align: center;
   line-height: 1.6;
   letter-spacing: 0.2px;
+  color: var(--text-secondary);
+}
+
+:root.dark .newsletter-section p {
+  color: var(--text-secondary);
 }
 
 .newsletter-form {

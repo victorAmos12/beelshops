@@ -33,6 +33,11 @@
   letter-spacing: 0.3px;
   margin: 0;
   padding: 0 0.5rem;
+  color: var(--text-primary);
+}
+
+:root.dark .product-card h3 {
+  color: var(--text-primary);
 }
 
 .product-card p {
@@ -40,6 +45,11 @@
   font-weight: 600;
   margin: 0;
   padding: 0 0.5rem 0.5rem;
+  color: var(--accent-gold);
+}
+
+:root.dark .product-card p {
+  color: var(--accent-gold);
 }
 
 /* Image container with better spacing */
