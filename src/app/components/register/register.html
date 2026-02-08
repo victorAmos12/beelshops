@@ -1,0 +1,187 @@
+<div class="register-container">
+  <div class="register-card">
+    <!-- Success Message -->
+    <div *ngIf="registrationSuccess()" class="success-message">
+      <svg class="success-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <div>
+        <h3>Inscription réussie!</h3>
+        <p>Redirection vers la connexion...</p>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div *ngIf="!registrationSuccess()" class="register-header">
+      <img src="/logo_beel.jpg" alt="Beel Shops" class="register-logo">
+      <h1 class="register-title">Créer un compte</h1>
+      <p class="register-subtitle">Rejoignez Beel Shops</p>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="error() && !registrationSuccess()" class="error-message">
+      <svg class="error-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span>{{ error() }}</span>
+    </div>
+
+    <!-- Form -->
+    <form *ngIf="!registrationSuccess()" [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="form-input"
+          placeholder="votre@email.com"
+          [class.error]="email?.invalid && email?.touched"
+        >
+        <span *ngIf="email?.invalid && email?.touched" class="form-error">
+          <span *ngIf="email?.errors?.['required']">L'email est requis</span>
+          <span *ngIf="email?.errors?.['email']">Email invalide</span>
+        </span>
+      </div>
+
+      <!-- Nom Field -->
+      <div class="form-group">
+        <label for="nom" class="form-label">Nom</label>
+        <input
+          id="nom"
+          type="text"
+          formControlName="nom"
+          class="form-input"
+          placeholder="Votre nom"
+          [class.error]="nom?.invalid && nom?.touched"
+        >
+        <span *ngIf="nom?.invalid && nom?.touched" class="form-error">
+          <span *ngIf="nom?.errors?.['required']">Le nom est requis</span>
+          <span *ngIf="nom?.errors?.['minlength']">Minimum 2 caractères</span>
+        </span>
+      </div>
+
+      <!-- Prenom Field -->
+      <div class="form-group">
+        <label for="prenom" class="form-label">Prénom</label>
+        <input
+          id="prenom"
+          type="text"
+          formControlName="prenom"
+          class="form-input"
+          placeholder="Votre prénom"
+          [class.error]="prenom?.invalid && prenom?.touched"
+        >
+        <span *ngIf="prenom?.invalid && prenom?.touched" class="form-error">
+          <span *ngIf="prenom?.errors?.['required']">Le prénom est requis</span>
+          <span *ngIf="prenom?.errors?.['minlength']">Minimum 2 caractères</span>
+        </span>
+      </div>
+
+      <!-- Phone Field -->
+      <div class="form-group">
+        <label for="phone" class="form-label">Téléphone (optionnel)</label>
+        <input
+          id="phone"
+          type="tel"
+          formControlName="phone"
+          class="form-input"
+          placeholder="+33 6 12 34 56 78"
+          [class.error]="phone?.invalid && phone?.touched"
+        >
+        <span *ngIf="phone?.invalid && phone?.touched" class="form-error">
+          <span *ngIf="phone?.errors?.['pattern']">Numéro de téléphone invalide</span>
+        </span>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password" class="form-label">Mot de passe</label>
+        <div class="password-input-wrapper">
+          <input
+            id="password"
+            [type]="showPassword() ? 'text' : 'password'"
+            formControlName="password"
+            class="form-input"
+            placeholder="••••••••"
+            [class.error]="password?.invalid && password?.touched"
+          >
+          <button
+            type="button"
+            (click)="togglePasswordVisibility()"
+            class="password-toggle"
+            aria-label="Afficher/Masquer le mot de passe"
+          >
+            <svg *ngIf="!showPassword()" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            <svg *ngIf="showPassword()" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-4.803m5.596-3.856a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 9.172L21 21m-12-12l.001-.001M21 21L9.172 9.172m0 0a8.934 8.934 0 112.6-6.124" />
+            </svg>
+          </button>
+        </div>
+        <span *ngIf="password?.invalid && password?.touched" class="form-error">
+          <span *ngIf="password?.errors?.['required']">Le mot de passe est requis</span>
+          <span *ngIf="password?.errors?.['minlength']">Minimum 8 caractères</span>
+        </span>
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
+        <div class="password-input-wrapper">
+          <input
+            id="confirmPassword"
+            [type]="showConfirmPassword() ? 'text' : 'password'"
+            formControlName="confirmPassword"
+            class="form-input"
+            placeholder="••••••••"
+            [class.error]="(confirmPassword?.invalid || registerForm.errors?.['passwordMismatch']) && confirmPassword?.touched"
+          >
+          <button
+            type="button"
+            (click)="toggleConfirmPasswordVisibility()"
+            class="password-toggle"
+            aria-label="Afficher/Masquer le mot de passe"
+          >
+            <svg *ngIf="!showConfirmPassword()" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            <svg *ngIf="showConfirmPassword()" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-4.803m5.596-3.856a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 9.172L21 21m-12-12l.001-.001M21 21L9.172 9.172m0 0a8.934 8.934 0 112.6-6.124" />
+            </svg>
+          </button>
+        </div>
+        <span *ngIf="(confirmPassword?.invalid || registerForm.errors?.['passwordMismatch']) && confirmPassword?.touched" class="form-error">
+          <span *ngIf="confirmPassword?.errors?.['required']">Confirmation requise</span>
+          <span *ngIf="registerForm.errors?.['passwordMismatch']">Les mots de passe ne correspondent pas</span>
+        </span>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="register-button"
+        [disabled]="registerForm.invalid || isLoading()"
+      >
+        <span *ngIf="!isLoading()">S'inscrire</span>
+        <span *ngIf="isLoading()" class="loading-spinner">
+          <svg class="spinner" viewBox="0 0 50 50">
+            <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+          Inscription en cours...
+        </span>
+      </button>
+    </form>
+
+    <!-- Footer -->
+    <div *ngIf="!registrationSuccess()" class="register-footer">
+      <p>Vous avez déjà un compte? <a routerLink="/auth/login" class="login-link">Se connecter</a></p>
+    </div>
+  </div>
+</div>

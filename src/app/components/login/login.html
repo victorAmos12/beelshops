@@ -1,0 +1,93 @@
+<div class="login-container">
+  <div class="login-card">
+    <!-- Header -->
+    <div class="login-header">
+      <img src="/logo_beel.jpg" alt="Beel Shops" class="login-logo">
+      <h1 class="login-title">Connexion</h1>
+      <p class="login-subtitle">Accédez à votre compte Beel Shops</p>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="error()" class="error-message">
+      <svg class="error-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span>{{ error() }}</span>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="form-input"
+          placeholder="votre@email.com"
+          [class.error]="email?.invalid && email?.touched"
+        >
+        <span *ngIf="email?.invalid && email?.touched" class="form-error">
+          <span *ngIf="email?.errors?.['required']">L'email est requis</span>
+          <span *ngIf="email?.errors?.['email']">Email invalide</span>
+        </span>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password" class="form-label">Mot de passe</label>
+        <div class="password-input-wrapper">
+          <input
+            id="password"
+            [type]="showPassword() ? 'text' : 'password'"
+            formControlName="password"
+            class="form-input"
+            placeholder="••••••••"
+            [class.error]="password?.invalid && password?.touched"
+          >
+          <button
+            type="button"
+            (click)="togglePasswordVisibility()"
+            class="password-toggle"
+            aria-label="Afficher/Masquer le mot de passe"
+          >
+            <svg *ngIf="!showPassword()" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            <svg *ngIf="showPassword()" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-4.803m5.596-3.856a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 9.172L21 21m-12-12l.001-.001M21 21L9.172 9.172m0 0a8.934 8.934 0 112.6-6.124" />
+            </svg>
+          </button>
+        </div>
+        <span *ngIf="password?.invalid && password?.touched" class="form-error">
+          <span *ngIf="password?.errors?.['required']">Le mot de passe est requis</span>
+          <span *ngIf="password?.errors?.['minlength']">Minimum 6 caractères</span>
+        </span>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="login-button"
+        [disabled]="loginForm.invalid || isLoading()"
+      >
+        <span *ngIf="!isLoading()">Se connecter</span>
+        <span *ngIf="isLoading()" class="loading-spinner">
+          <svg class="spinner" viewBox="0 0 50 50">
+            <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+          Connexion en cours...
+        </span>
+      </button>
+    </form>
+
+    <!-- Footer -->
+    <div class="login-footer">
+      <p>Pas encore de compte? <a routerLink="/auth/register" class="register-link">S'inscrire</a></p>
+      <a href="#" class="forgot-password">Mot de passe oublié?</a>
+    </div>
+  </div>
+</div>

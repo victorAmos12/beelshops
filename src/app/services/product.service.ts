@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface Product {
   id: number;
@@ -25,7 +26,7 @@ export interface Category {
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:8000/api'; // À adapter selon votre config
+  private apiUrl = environment.apiUrl;
   
   // Images par défaut pour fallback
   private defaultImages = [

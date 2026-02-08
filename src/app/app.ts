@@ -1,14 +1,5 @@
 import { Component, signal, ViewEncapsulation } from '@angular/core';
-import { RouterOutlet, provideRouter } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
-import { HeaderComponent } from './components/header/header';
-import { HeroComponent } from './components/hero/hero';
-import { CategoriesComponent } from './components/categories/categories';
-import { FeaturedProductsComponent } from './components/featured-products/featured-products';
-import { StoryComponent } from './components/story/story';
-import { ValuesComponent } from './components/values/values';
-import { NewsletterComponent } from './components/newsletter/newsletter';
-import { FooterComponent } from './components/footer/footer';
+import { RouterOutlet } from '@angular/router';
 import { PwaInstallModalComponent } from './components/pwa-install-modal/pwa-install-modal';
 import { ThemeService } from './services/theme.service';
 import { PwaInstallService } from './services/pwa-install.service';
@@ -18,17 +9,12 @@ import { PwaInstallService } from './services/pwa-install.service';
   standalone: true,
   imports: [
     RouterOutlet,
-    HeaderComponent,
-    HeroComponent,
-    CategoriesComponent,
-    FeaturedProductsComponent,
-    StoryComponent,
-    ValuesComponent,
-    NewsletterComponent,
-    FooterComponent,
     PwaInstallModalComponent
   ],
-  templateUrl: './app.html',
+  template: `
+    <app-pwa-install-modal></app-pwa-install-modal>
+    <router-outlet></router-outlet>
+  `,
   styleUrl: './app.css',
   providers: [ThemeService, PwaInstallService],
   encapsulation: ViewEncapsulation.None
