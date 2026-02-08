@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewEncapsulation } from '@angular/core';
 import { RouterOutlet, provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header';
@@ -27,7 +27,8 @@ import { ThemeService } from './services/theme.service';
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
-  providers: [ThemeService]
+  providers: [ThemeService],
+  encapsulation: ViewEncapsulation.None
 })
 export class App {
   protected readonly title = signal('beel');

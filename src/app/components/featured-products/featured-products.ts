@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ViewEncapsulation } from '@angular/core';
 import { NgFor, NgIf, AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { ProductService } from '../../services/product.service';
@@ -16,7 +16,8 @@ export interface Product {
   standalone: true,
   imports: [NgFor, NgIf, AsyncPipe],
   templateUrl: './featured-products.html',
-  styleUrl: './featured-products.css'
+  styleUrl: './featured-products.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class FeaturedProductsComponent implements OnInit {
   private productService = inject(ProductService);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
 
 interface Value {
@@ -11,7 +11,8 @@ interface Value {
   selector: 'app-values',
   standalone: true,
   imports: [NgFor, NgSwitch, NgSwitchCase],
-  templateUrl: './values.html'
+  templateUrl: './values.html',
+  encapsulation: ViewEncapsulation.None
 })
 export class ValuesComponent {
   values: Value[] = [

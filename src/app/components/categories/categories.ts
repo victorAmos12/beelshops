@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ViewEncapsulation } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 
@@ -13,7 +13,8 @@ export interface Category {
   standalone: true,
   imports: [NgFor],
   templateUrl: './categories.html',
-  styleUrl: './categories.css'
+  styleUrl: './categories.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class CategoriesComponent implements OnInit {
   private productService = inject(ProductService);

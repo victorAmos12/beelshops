@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ViewEncapsulation } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { ThemeService } from '../../services/theme.service';
 
@@ -7,7 +7,8 @@ import { ThemeService } from '../../services/theme.service';
   standalone: true,
   imports: [NgIf],
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrl: './header.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent {
   private themeService = inject(ThemeService);

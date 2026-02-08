@@ -1,7 +1,50 @@
+/* Categories Section - Enhanced Styling */
+
 .category-card {
-  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 300ms ease;
 }
 
 .category-card:hover {
   transform: translateY(-8px);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+  border-radius: 8px;
+}
+
+.category-card:hover img {
+  transform: scale(1.05);
+}
+
+.category-card h3 {
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  transition: color 300ms ease;
+  letter-spacing: 0.3px;
+}
+
+.category-card:hover h3 {
+  color: var(--accent-gold);
+}
+
+/* Grid spacing improvements */
+@media (min-width: 768px) {
+  .category-card {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .category-card {
+    gap: 1.5rem;
+  }
 }

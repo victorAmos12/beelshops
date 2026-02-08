@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, signal, effect } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal, effect, ViewEncapsulation } from '@angular/core';
 import { NgFor } from '@angular/common';
 
 @Component({
@@ -6,7 +6,8 @@ import { NgFor } from '@angular/common';
   standalone: true,
   imports: [NgFor],
   templateUrl: './hero.html',
-  styleUrl: './hero.css'
+  styleUrl: './hero.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class HeroComponent implements OnInit, OnDestroy {
   currentSlideIndex = signal(0);

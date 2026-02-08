@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-newsletter',
   standalone: true,
   imports: [NgIf, FormsModule],
-  templateUrl: './newsletter.html'
+  templateUrl: './newsletter.html',
+  encapsulation: ViewEncapsulation.None
 })
 export class NewsletterComponent {
   email: string = '';
