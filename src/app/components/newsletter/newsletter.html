@@ -1,0 +1,35 @@
+<section class="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-r from-gold/10 to-champagne/10 dark:from-dark-surface dark:to-dark-bg">
+  <div class="max-w-2xl mx-auto text-center">
+    <!-- Heading -->
+    <h2 class="font-serif text-3xl md:text-5xl font-bold text-charcoal dark:text-white mb-4 md:mb-6">
+      Rejoignez Beel
+    </h2>
+
+    <!-- Subtitle -->
+    <p class="text-taupe dark:text-warm-gray text-base md:text-lg font-display mb-8 md:mb-12">
+      Recevez nos nouveautés en avant-première et profitez d'offres exclusives
+    </p>
+
+    <!-- Form -->
+    <form (ngSubmit)="onSubmit()" class="flex flex-col sm:flex-row gap-3 md:gap-4">
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Votre adresse email"
+        required
+        class="flex-1 px-4 md:px-6 py-3 md:py-4 rounded-sm border border-warm-gray dark:border-taupe bg-white dark:bg-dark-surface text-charcoal dark:text-white placeholder-taupe dark:placeholder-warm-gray focus:outline-none focus:border-gold dark:focus:border-soft-gold transition-colors duration-300 text-sm md:text-base">
+
+      <button
+        type="submit"
+        class="px-6 md:px-8 py-3 md:py-4 bg-gold dark:bg-soft-gold text-charcoal font-semibold rounded-sm hover:shadow-2xl transition-all duration-300 transform hover:scale-105 whitespace-nowrap text-sm md:text-base">
+        S'inscrire
+      </button>
+    </form>
+
+    <!-- Confirmation Message -->
+    <p *ngIf="submitted" class="mt-4 md:mt-6 text-green-600 dark:text-green-400 font-display text-sm md:text-base">
+      ✓ Merci ! Vérifiez votre email pour confirmer votre inscription.
+    </p>
+  </div>
+</section>

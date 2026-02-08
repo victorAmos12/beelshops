@@ -1,0 +1,80 @@
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        [style.background-color]="isScrolled() ? 'var(--bg-secondary)' : 'transparent'"
+        [style.box-shadow]="isScrolled() ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'"
+        [style.color]="'var(--text-primary)'">
+  <nav class="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-6 flex items-center justify-between">
+    <!-- Logo et Nom (Toujours visible) -->
+    <div class="flex items-center gap-2">
+      <img src="/logo_beel.jpg" alt="Beel Shops" class="h-8 md:h-10 w-auto">
+      <span class="hidden md:inline font-serif text-xl md:text-2xl font-bold" style="color: var(--text-primary);">Beel</span>
+    </div>
+
+    <!-- Menu Center (Hidden on mobile) -->
+    <ul class="hidden md:flex items-center gap-6 md:gap-8">
+      <li><a href="#" class="nav-link">Nouveautés</a></li>
+      <li><a href="#" class="nav-link">Bijoux</a></li>
+      <li><a href="#" class="nav-link">Chaînes</a></li>
+      <li><a href="#" class="nav-link">Bracelets</a></li>
+      <li><a href="#" class="nav-link">Collections</a></li>
+      <li><a href="#" class="nav-link">À propos</a></li>
+    </ul>
+
+    <!-- Right Icons -->
+    <div class="flex items-center gap-3 md:gap-6">
+      <!-- Search -->
+      <button aria-label="Recherche" class="icon-btn">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </button>
+
+      <!-- User -->
+      <button aria-label="Compte" class="icon-btn">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+      </button>
+
+      <!-- Cart -->
+      <button aria-label="Panier" class="icon-btn relative">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span class="absolute -top-2 -right-2 text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold" style="background-color: var(--accent-gold); color: #2c2c2c;">0</span>
+      </button>
+
+      <!-- Theme Toggle -->
+      <button (click)="toggleTheme()" aria-label="Changer le thème" class="icon-btn">
+        <svg *ngIf="!darkMode()" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" />
+          <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m5.08-5.08l4.24-4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg *ngIf="darkMode()" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+
+      <!-- Mobile Menu Toggle -->
+      <button (click)="toggleMobileMenu()" aria-label="Menu" class="md:hidden icon-btn">
+        <svg *ngIf="!mobileMenuOpen()" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg *ngIf="mobileMenuOpen()" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div *ngIf="mobileMenuOpen()" class="md:hidden border-t animate-slide-down" [style.border-color]="'var(--border-color)'" [style.background-color]="'var(--bg-primary)'">
+    <ul class="flex flex-col gap-0">
+      <li><a href="#" class="block px-6 py-3 border-b hover:opacity-80" [style.color]="'var(--text-primary)'" [style.border-color]="'var(--border-color)'" (click)="closeMobileMenu()">Nouveautés</a></li>
+      <li><a href="#" class="block px-6 py-3 border-b hover:opacity-80" [style.color]="'var(--text-primary)'" [style.border-color]="'var(--border-color)'" (click)="closeMobileMenu()">Bijoux</a></li>
+      <li><a href="#" class="block px-6 py-3 border-b hover:opacity-80" [style.color]="'var(--text-primary)'" [style.border-color]="'var(--border-color)'" (click)="closeMobileMenu()">Chaînes</a></li>
+      <li><a href="#" class="block px-6 py-3 border-b hover:opacity-80" [style.color]="'var(--text-primary)'" [style.border-color]="'var(--border-color)'" (click)="closeMobileMenu()">Bracelets</a></li>
+      <li><a href="#" class="block px-6 py-3 border-b hover:opacity-80" [style.color]="'var(--text-primary)'" [style.border-color]="'var(--border-color)'" (click)="closeMobileMenu()">Collections</a></li>
+      <li><a href="#" class="block px-6 py-3 hover:opacity-80" [style.color]="'var(--text-primary)'" (click)="closeMobileMenu()">À propos</a></li>
+    </ul>
+  </div>
+</header>

@@ -1,3 +1,225 @@
-/* You can add global styles to this file, and also import other style files */
+/* CSS Variables pour Light/Dark Mode */
+:root {
+  /* Light mode colors */
+  --bg-primary: #faf8f3;
+  --bg-secondary: #f5f1e8;
+  --bg-tertiary: #e8e4d9;
+  --text-primary: #2c2c2c;
+  --text-secondary: #a5a0a0;
+  --accent-gold: #d4af37;
+  --accent-soft: #e8d7a0;
+  --border-color: #e8e4d9;
+}
+
+:root.dark {
+  /* Dark mode colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #252525;
+  --bg-tertiary: #3a3a3a;
+  --text-primary: #f5f1e8;
+  --text-secondary: #e8e4d9;
+  --accent-gold: #e8d7a0;
+  --accent-soft: #d4af37;
+  --border-color: #3a3a3a;
+}
 
 @import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--text-secondary);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-gold);
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(212, 175, 55, 0.2);
+  color: var(--text-primary);
+}
+
+:root.dark ::selection {
+  background-color: rgba(232, 215, 160, 0.2);
+}
+
+/* Form styling */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-gold);
+}
+
+/* Link styling */
+a {
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+/* Button base styling */
+button {
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+/* Paragraph spacing */
+p {
+  line-height: 1.625;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+h2 {
+  font-size: 1.875rem;
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 2.25rem;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  h3 {
+    font-size: 1.875rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtleZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.slide-down {
+  animation: slideDown 0.6s ease-out;
+}
+
+.subtle-zoom {
+  animation: subtleZoom 0.3s ease-out;
+}
+
+/* Utility classes */
+.text-charcoal {
+  color: #2c2c2c;
+}
+
+:root.dark .text-charcoal {
+  color: #f5f1e8;
+}
+
+.text-gold {
+  color: var(--accent-gold);
+}
+
+.bg-gold {
+  background-color: var(--accent-gold);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+:root.dark .bg-white {
+  background-color: #252525;
+}
+
+.bg-beige {
+  background-color: var(--bg-secondary);
+}
+
+.border-gray {
+  border-color: var(--border-color);
+}

@@ -1,0 +1,72 @@
+<section class="py-16 md:py-24 px-4 md:px-6 bg-beige dark:bg-dark-surface">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="font-serif text-3xl md:text-5xl font-bold text-charcoal dark:text-white mb-4">
+        Nos Incontournables
+      </h2>
+      <p class="text-taupe dark:text-warm-gray text-base md:text-lg font-display">
+        Découvrez nos pièces les plus emblématiques
+      </p>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-8 md:mb-12">
+      <div *ngFor="let product of (products$ | async)"
+           class="group flex flex-col product-card">
+        <!-- Product Image -->
+        <div class="relative overflow-hidden rounded-lg bg-white dark:bg-dark-bg h-64 md:h-80 mb-4 md:mb-6">
+          <img [src]="product.image || defaultImage"
+               [alt]="product.name"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          
+          <!-- Favorite Button -->
+          <button class="absolute top-4 right-4 bg-white/90 dark:bg-dark-surface/90 rounded-full p-2 md:p-3 transition-all duration-300 hover:bg-gold hover:text-charcoal"
+                  aria-label="Ajouter aux favoris">
+            <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </button>
+
+          <!-- Add to Cart Button (Visible on hover desktop, always visible on mobile) -->
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-end justify-center pb-4 md:pb-6 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+            <button class="px-4 md:px-6 py-2 md:py-3 bg-gold dark:bg-soft-gold text-charcoal font-semibold rounded-sm hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm md:text-base">
+              Ajouter au panier
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <h3 class="font-serif text-sm md:text-lg font-semibold text-charcoal dark:text-white mb-1 md:mb-2">
+          {{ product.name }}
+        </h3>
+        <p class="text-gold dark:text-soft-gold font-semibold text-base md:text-lg">
+          {{ product.price }}€
+        </p>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading()" class="text-center py-12">
+      <div class="inline-block">
+        <div class="w-8 h-8 border-4 border-gold border-t-transparent rounded-full animate-spin"></div>
+      </div>
+      <p class="text-taupe dark:text-warm-gray mt-4">Chargement des produits...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error()" class="text-center py-12 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
+      <p class="text-red-600 dark:text-red-400">{{ error() }}</p>
+      <button (click)="loadProducts()" class="mt-4 px-6 py-2 bg-gold text-charcoal rounded-sm hover:shadow-lg transition-all">
+        Réessayer
+      </button>
+    </div>
+
+    <!-- View All Button -->
+    <div class="text-center">
+      <button class="px-6 md:px-8 py-3 md:py-4 border-2 border-charcoal dark:border-white text-charcoal dark:text-white font-semibold rounded-sm hover:bg-charcoal dark:hover:bg-white hover:text-white dark:hover:text-charcoal transition-all duration-300 text-sm md:text-base">
+        Voir tous les produits
+      </button>
+    </div>
+  </div>
+</section>
