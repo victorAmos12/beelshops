@@ -1,6 +1,7 @@
 import { Component, inject, signal, ViewEncapsulation } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { ThemeService } from '../../services/theme.service';
+import { PwaInstallService } from '../../services/pwa-install.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,9 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class HeaderComponent {
   private themeService = inject(ThemeService);
+  private pwaInstallService = inject(PwaInstallService);
   darkMode = this.themeService.darkMode;
+  showInstallButton = this.pwaInstallService.showInstallButton;
   isScrolled = signal(false);
   mobileMenuOpen = signal(false);
 
@@ -34,5 +37,9 @@ export class HeaderComponent {
 
   closeMobileMenu(): void {
     this.mobileMenuOpen.set(false);
+  }
+
+  async installApp(): Promise<void> {
+    await this.pwaInstallService.installApp();
   }
 }

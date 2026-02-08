@@ -9,7 +9,9 @@ import { StoryComponent } from './components/story/story';
 import { ValuesComponent } from './components/values/values';
 import { NewsletterComponent } from './components/newsletter/newsletter';
 import { FooterComponent } from './components/footer/footer';
+import { PwaInstallModalComponent } from './components/pwa-install-modal/pwa-install-modal';
 import { ThemeService } from './services/theme.service';
+import { PwaInstallService } from './services/pwa-install.service';
 
 @Component({
   selector: 'app-root',
@@ -23,11 +25,12 @@ import { ThemeService } from './services/theme.service';
     StoryComponent,
     ValuesComponent,
     NewsletterComponent,
-    FooterComponent
+    FooterComponent,
+    PwaInstallModalComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
-  providers: [ThemeService],
+  providers: [ThemeService, PwaInstallService],
   encapsulation: ViewEncapsulation.None
 })
 export class App {

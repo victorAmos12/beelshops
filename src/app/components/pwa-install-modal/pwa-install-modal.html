@@ -1,0 +1,51 @@
+<div *ngIf="isInstallable() && !isInstalled()" class="pwa-modal-overlay">
+  <div class="pwa-modal">
+    <!-- Header -->
+    <div class="pwa-modal-header">
+      <img src="/logo_beel.jpg" alt="Beel Shops" class="pwa-modal-icon">
+      <h2 class="pwa-modal-title">Installer Beel Shops</h2>
+      <button (click)="dismissModal()" class="pwa-modal-close" aria-label="Fermer">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div class="pwa-modal-content">
+      <p class="pwa-modal-description">
+        Installez Beel Shops sur votre appareil pour un accès rapide et une meilleure expérience.
+      </p>
+      <div class="pwa-modal-features">
+        <div class="pwa-feature">
+          <svg class="pwa-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Accès rapide</span>
+        </div>
+        <div class="pwa-feature">
+          <svg class="pwa-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <span>Hors ligne</span>
+        </div>
+        <div class="pwa-feature">
+          <svg class="pwa-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+          </svg>
+          <span>Expérience native</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="pwa-modal-actions">
+      <button (click)="dismissModal()" class="pwa-btn pwa-btn-secondary">
+        Plus tard
+      </button>
+      <button (click)="installApp()" class="pwa-btn pwa-btn-primary">
+        Installer
+      </button>
+    </div>
+  </div>
+</div>

@@ -43,6 +43,13 @@
         <span class="cart-badge" style="background-color: var(--accent-gold); color: #2c2c2c;">0</span>
       </button>
 
+      <!-- Install App Button -->
+      <button *ngIf="showInstallButton()" (click)="installApp()" aria-label="Installer l'application" class="icon-btn install-btn" title="Installer Beel Shops">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+      </button>
+
       <!-- Theme Toggle -->
       <button (click)="toggleTheme()" aria-label="Changer le thème" class="icon-btn">
         <svg *ngIf="!darkMode()" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
