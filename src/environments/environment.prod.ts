@@ -9,7 +9,7 @@ export const environment = {
 
 function getApiUrl(): string {
   if (typeof window === 'undefined') {
-    return 'https://beelshop.page.gd/api';
+    return 'https://beelshops.alwaysdata.net/index.php/api';
   }
 
   const hostname = window.location.hostname;
@@ -17,11 +17,11 @@ function getApiUrl(): string {
 
   // Production - Vercel
   if (hostname === 'beelshops.vercel.app' || hostname.includes('vercel.app')) {
-    return 'https://beelshop.page.gd/api';
+    return 'https://beelshops.alwaysdata.net/index.php/api';
   }
 
-  // Fallback - utiliser le backend Infinity Free
-  return 'https://beelshop.page.gd/api';
+  // Fallback - utiliser le backend AlwaysData
+  return 'https://beelshops.alwaysdata.net/index.php/api';
 }
 
 export default environment;

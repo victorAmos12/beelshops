@@ -21,12 +21,12 @@ function getApiUrl(): string {
 
   // Production - Vercel
   if (hostname === 'beelshops.vercel.app' || hostname.includes('vercel.app')) {
-    return 'https://beelshop.page.gd/api';
+    return 'https://beelshops.alwaysdata.net/index.php/api';
   }
 
   // Staging/Preview
   if (hostname.includes('staging') || hostname.includes('preview')) {
-    return 'https://beelshop.page.gd/api';
+    return 'https://beelshops.alwaysdata.net/index.php/api';
   }
 
   // Développement local
@@ -34,8 +34,8 @@ function getApiUrl(): string {
     return 'http://localhost:8000/api';
   }
 
-  // Fallback - utiliser le backend Infinity Free
-  return 'https://beelshop.page.gd/api';
+  // Fallback - utiliser le backend AlwaysData
+  return 'https://beelshops.alwaysdata.net/index.php/api';
 }
 
 export default environment;
